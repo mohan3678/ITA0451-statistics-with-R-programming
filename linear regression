@@ -1,0 +1,33 @@
+install.packages("ggplot2") 
+
+library(ggplot2) 
+
+  
+
+height <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131) 
+
+weight <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48) 
+
+  
+
+data <- data.frame(height, weight) 
+
+model <- lm(weight ~ height, data = data) 
+
+  
+
+new_height <- data.frame(height = 170) 
+
+ predicted_weight <- predict(model, newdata = new_height) 
+
+predicted_weight 
+
+ ggplot(data, aes(x = height, y = weight)) + 
+
+  geom_point() + 
+
+  geom_smooth(method = "lm", se = FALSE, color = "blue") + 
+
+  labs(x = "Height", y = "Weight", title = "Linear Regression") + 
+
+  theme_minimal() 
