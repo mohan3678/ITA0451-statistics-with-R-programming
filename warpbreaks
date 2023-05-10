@@ -1,0 +1,8 @@
+data(warpbreaks)
+head(warpbreaks)  
+str(warpbreaks)   
+summary(warpbreaks)  
+model <- glm(breaks ~ wool + tension, data = warpbreaks, family = poisson)
+summary(model)
+new_data <- data.frame(wool = "A", tension = "low")
+predicted_breaks <- predict(model, newdata = new_data, type = "response")
